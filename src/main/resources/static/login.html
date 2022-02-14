@@ -1,0 +1,96 @@
+
+<!-- <div class="container w-75 mt-5 rounded shadow">
+    <div class="row">
+        <div class="col bg-image d-none d-lg-block col-md-5 col-lg-5 col-xl-6 rounded">
+            <img src="./img/beca.png" width="400" alt="">
+        </div>
+        <div class="col bg-white p-5 rounded-end">
+            <img src="./img/beca.png" width="48" alt="">
+            <h2 class="fw-bold text-center"></h2>
+            <h5 class="text-center mb-2"><small>INICIA SESIÓN</small></h5>
+            <form class="needs-validation" novalidate>
+                <div class="mb-4">
+                    <label >Usuario</label>
+                    <input required ng-model="user.username" type="usuario" class="form-control" name="usuario" placeholder="Usuario">
+                    <div class="invalid-feedback">
+                        Ingresa Usuario
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <label>Contraseña</label>
+                    <input required ng-model="user.pass" type="password" class="form-control" name="password" placeholder="Contraseña">
+                    <div class="invalid-feedback">
+                        Ingresa Contraseña
+                    </div>
+                </div>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary" ng-click="ctrlLogin.inicioSesion()">Iniciar sesión</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div> -->
+<style>
+   .divider:after,
+    .divider:before {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: #eee;
+    } 
+</style>
+<section class="vh-75">
+    <div class="container py-3 h-100">
+      <div class="row d-flex align-items-center justify-content-center h-100">
+        <div class="col-md-8 col-lg-7 col-xl-6">
+          <img src="./img/login.svg" class="img-fluid" alt="Phone image">
+        </div>
+        <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+            <h5 class="text-center mb-2"><small>INICIA SESIÓN</small></h5>
+            <form class="needs-validation" novalidate>
+                <div class="mb-4">
+                    <label >Usuario</label>
+                    <input required ng-model="user.userName" type="user" class="form-control" name="usuario" placeholder="Usuario">
+                    <div class="invalid-feedback">
+                        Ingresa Usuario
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <label>Contraseña</label>
+                    <input required ng-model="user.password" type="password" class="form-control" name="password" placeholder="Contraseña">
+                    <div class="invalid-feedback">
+                        Ingresa Contraseña
+                    </div>
+                </div>
+                <div class="d-flex justify-content-around align-items-center mb-4">
+                    <!-- Checkbox -->
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value=""
+                        id="form1Example3"
+                        checked
+                      />
+                      <label class="form-check-label" for="form1Example3"> Recordarme </label>
+                    </div>
+                    <a href="#!">Olvidó la contraseña?</a>
+                </div>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary btn-md btn-block">Iniciar sesión</button>
+                    <div class="divider d-flex align-items-center my-4">
+                        <p class="text-center fw-bold mx-3 mb-0 text-muted">Ó</p>
+                    </div>
+
+                    <a class="btn btn-primary btn-md btn-block mb-3" style="background-color: #3b5998" href="#!" role="button">
+                        <i class="fab fa-facebook-f me-2"></i>Continuar con Facebook
+                    </a>
+                    <a class="btn btn-primary btn-md btn-block" style="background-color: #4285F4" href="#!" role="button">
+                        <i class="fab fa-google me-2"></i>Continuar con Google</a>
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+</section>
+  
