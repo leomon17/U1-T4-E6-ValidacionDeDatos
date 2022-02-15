@@ -43,7 +43,7 @@ public class SolicitudController {
                     obj.setMessage(fieldError.getDefaultMessage());
                     solicitud = obj;
                 }
-                System.out.println("Message dentro del if: " + solicitud.getMessage());
+                // System.out.println("Message dentro del if: " + solicitud.getMessage());
                 
             }else{
                 obj.setMessage("Notificación registrada correctamente");

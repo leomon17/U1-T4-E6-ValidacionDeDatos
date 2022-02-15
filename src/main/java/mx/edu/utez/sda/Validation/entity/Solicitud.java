@@ -29,12 +29,14 @@ public class Solicitud implements Serializable{
     private long id;
 
     @NotBlank(message ="El nombre no puede estar vacío")
-    @Length(min=2, message = "La longitud máxima del nombre real es 2")
+    @NotNull(message ="El nombre no puede estar vacío")
+    @Length(min=2, message = "La longitud minima del nombre real es 2")
     @Column(name = "name")
 	private String name;
 
     @NotBlank(message ="El Apellido no puede estar vacío")
-    @Length(min=2, message = "La longitud máxima del apellido paterno es 2")
+    @NotNull(message ="El Apellido no puede estar vacío")
+    @Length(min=2, message = "La longitud minima del apellido paterno es 2")
 	@Column(name = "lastname")
     private String lastname;
 
@@ -47,15 +49,19 @@ public class Solicitud implements Serializable{
     private Date dateBirth;
 
     @Email(message="El correo debe de ser valido")
+    @NotNull(message ="El correo no puede estar vacío")
+    @NotBlank(message ="El correo no puede estar vacío")
 	@Column(name = "email")
     private String email;
 
     @NotNull(message ="El numero debe ser de 10 dígitos")
-    @Length(min=9, max=15, message = "La longitud máxima del Numero es 10")
+    @NotBlank(message ="El numero debe ser de 10 dígitos")
+    @Length(min=10, max=13, message = "La longitud es incorrecta")
 	@Column(name = "phone")
     private String phone;
 
     @NotNull(message ="El sexo no puede estar vacío")
+    @NotBlank(message ="El sexo no puede estar vacío")
     @Column(name = "sexo")
     private String sexo;
 
@@ -70,12 +76,14 @@ public class Solicitud implements Serializable{
     private Municipality municipality;
 
     @NotNull(message ="La dirección no puede estar vacía")
-    @Length(min=2, message = "La longitud máxima de la dirección es 2")
+    @NotBlank(message ="La dirección no puede estar vacía")
+    @Length(min=2, message = "La longitud minima de la dirección es 2")
 	@Column(name = "address")
     private String address;
 
     @NotNull(message ="La institution no puede estar vacía")
-    @Length(min=2, message = "La longitud máxima de la institution es 2")
+    @NotBlank(message ="La institution no puede estar vacía")
+    @Length(min=2, message = "La longitud minima de la institution es 2")
     @Column(name = "institution")
     private String institution;
     
@@ -91,6 +99,7 @@ public class Solicitud implements Serializable{
     private float average;
 
     @NotNull(message ="La razon no puede estar vacía")
+    @NotBlank(message ="La razon no puede estar vacía")
 	@Column(name = "reason")
     private String reason;
 
