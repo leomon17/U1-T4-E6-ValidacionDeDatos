@@ -17,7 +17,10 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.hibernate.validator.constraints.Length;
+import org.springframework.context.annotation.PropertySource;
+@PropertySource("messages.properties")
 
 @Entity
 @Table(name="solicitud")
@@ -28,78 +31,79 @@ public class Solicitud implements Serializable{
     @Column(name = "id")
     private long id;
 
-    @NotBlank(message ="El nombre no puede estar vacío")
-    @NotNull(message ="El nombre no puede estar vacío")
-    @Length(min=2, message = "La longitud minima del nombre real es 2")
+    @NotBlank(message ="{user.name.notBlank}")
+    @NotNull(message ="{user.name.notNull}")
+    @Length(min=2, message = "{user.name.length}")
     @Column(name = "name")
 	private String name;
 
-    @NotBlank(message ="El Apellido no puede estar vacío")
-    @NotNull(message ="El Apellido no puede estar vacío")
-    @Length(min=2, message = "La longitud minima del apellido paterno es 2")
+    @NotBlank(message ="{user.lastname.notBlank}")
+    @NotNull(message ="{user.lastname.notBlank}")
+    @Length(min=2, message = "{user.lastname.notBlank}")
 	@Column(name = "lastname")
     private String lastname;
 
 	@Column(name = "surname")
     private String surname;
 
-    @Past(message = "La fecha no es valida")
-    @NotNull(message ="La fecha de nacimiento no puede estar vacía")
+    @Past(message = "{user.name.past}")
+    @NotNull(message ="{user.name.notNull}")
+    @JsonFormat(pattern = "dd/MM/yyyy")
 	@Column(name = "date_birth")
     private Date dateBirth;
 
-    @Email(message="El correo debe de ser valido")
-    @NotNull(message ="El correo no puede estar vacío")
-    @NotBlank(message ="El correo no puede estar vacío")
+    @Email(message="{user.email.email}")
+    @NotNull(message ="{user.email.notNull}")
+    @NotBlank(message ="{user.email.notBlank}")
 	@Column(name = "email")
     private String email;
 
-    @NotNull(message ="El numero debe ser de 10 dígitos")
-    @NotBlank(message ="El numero debe ser de 10 dígitos")
-    @Length(min=10, max=13, message = "La longitud es incorrecta")
+    @NotNull(message ="{user.phone.notNull}")
+    @NotBlank(message ="{user.phone.notBlank}")
+    @Length(min=10, max=13, message = "{user.phone.length}")
 	@Column(name = "phone")
     private String phone;
 
-    @NotNull(message ="El sexo no puede estar vacío")
-    @NotBlank(message ="El sexo no puede estar vacío")
+    @NotNull(message ="{user.sexo.notBlank}")
+    @NotBlank(message ="{user.sexo.notNull}")
     @Column(name = "sexo")
     private String sexo;
 
-    @NotNull(message ="El estado no puede estar vacío")
+    @NotNull(message ="{user.state.notNull}")
 	@OneToOne
     @JoinColumn(name = "state")
     private State state;
 
-    @NotNull(message ="El municipio no puede estar vacío")
+    @NotNull(message ="{user.municipality.notNull}")
 	@OneToOne
     @JoinColumn(name = "municipality")
     private Municipality municipality;
 
-    @NotNull(message ="La dirección no puede estar vacía")
-    @NotBlank(message ="La dirección no puede estar vacía")
-    @Length(min=2, message = "La longitud minima de la dirección es 2")
+    @NotNull(message ="{user.address.notNull}")
+    @NotBlank(message ="{user.address.notBlank}")
+    @Length(min=2, message = "{user.address.length}")
 	@Column(name = "address")
     private String address;
 
-    @NotNull(message ="La institution no puede estar vacía")
-    @NotBlank(message ="La institution no puede estar vacía")
-    @Length(min=2, message = "La longitud minima de la institution es 2")
+    @NotNull(message ="{user.institution.notNull}")
+    @NotBlank(message ="{user.institution.notBlank}")
+    @Length(min=2, message = "{user.institution.length}")
     @Column(name = "institution")
     private String institution;
     
-    @NotNull(message ="Grado academico no puede estar vacío")
+    @NotNull(message ="{user.academicLevel.notNull}")
 	@OneToOne
     @JoinColumn(name = "academic_level")
     private AcademicLevel academicLevel;
 
-    @NotNull(message ="El Promedio no puede estar vacío")
-    @Max(value=100, message ="El Promedio no puedes ser mayor a 100")
-    @Digits(integer = 3, fraction = 2, message = "La longitud máxima del Numero es 100")
+    @NotNull(message ="{user.average.notNull}")
+    @Max(value=100, message ="{user.average.max}")
+    @Digits(integer = 3, fraction = 2, message = "{user.average.digits}")
 	@Column(name = "average")
     private float average;
 
-    @NotNull(message ="La razon no puede estar vacía")
-    @NotBlank(message ="La razon no puede estar vacía")
+    @NotNull(message ="{user.reason.notNull}")
+    @NotBlank(message ="{user.reason.notBlank}")
 	@Column(name = "reason")
     private String reason;
 
