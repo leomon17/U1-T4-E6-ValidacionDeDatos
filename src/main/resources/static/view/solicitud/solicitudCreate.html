@@ -17,7 +17,7 @@
         <div class="card-header">
             <h5>Registro de Solicitud</h5>
         </div>
-        <form novalidate class="needs-validation">
+        <form novalidate class="needs-validation" id="formSolicitud">
             <div class="card-body">
                 <div class="row g-2">
                     <div class="col-md-4 col-lg-4">
@@ -131,7 +131,7 @@
                         <!-- <input id="x" type="hidden" name="content">
                         <trix-editor id="trixContent" class="trix-content document-content" input="x" ng-model="solicitud.reason"></trix-editor> -->
                         <div class="form-floating">
-                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" ng-model="solicitud.reason" required></textarea>
+                            <textarea class="form-control" placeholder="Leave a comment here" id="reason" ng-model="solicitud.reason" required pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ0-9#.,\s]{2,100}"></textarea>
                             <label for="floatingTextarea">Motivos</label>
                             <div class="invalid-feedback">Este es un campo obligatorio</div> 
                         </div>

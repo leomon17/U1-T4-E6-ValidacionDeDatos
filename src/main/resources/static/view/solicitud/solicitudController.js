@@ -19,12 +19,12 @@ function ($rootScope, $scope, $http, APP_URL, $routeParams, $window) {
         const forms = document.querySelectorAll('.needs-validation');
         Array.prototype.slice.call(forms).forEach((form) => {
           form.addEventListener('submit', (event) => {
-            let content = document.querySelectorAll('trix-editor');
-            let reasonContent = $('#reasonContent');
+            // let content = document.querySelectorAll('trix-editor');
+            // let reasonContent = $('#reasonContent');
             if (!form.checkValidity()) {
               event.preventDefault();
               event.stopPropagation();
-              reasonContent.empty();
+              // reasonContent.empty();
             }
             else {
               this.create(); 
@@ -33,6 +33,7 @@ function ($rootScope, $scope, $http, APP_URL, $routeParams, $window) {
           }, false);
         });
       })();
+
 
       $(document).ready(function () {
 
@@ -107,6 +108,42 @@ function ($rootScope, $scope, $http, APP_URL, $routeParams, $window) {
           if (res.data) {
             // console.log(res.data);
             if (res.data.message != 'Notificación registrada correctamente') {
+              let name = document.getElementById('name');
+              let lastname = document.getElementById('lastname');
+              let address = document.getElementById('address');
+              let institution = document.getElementById('institution');
+              let reason = document.getElementById('reason');
+
+              if (res.data.name === " " || res.data.name === null) {   
+                name.classList.add('error-input');
+              }else {
+                name.classList.remove('error-input');
+                name.classList.add('error-success');
+              }
+              if (res.data.lastname === " " || res.data.lastname === null) {               
+                lastname.classList.add('error-input');
+              }else{
+                lastname.classList.remove('error-input');
+                lastname.classList.add('error-success');
+              } 
+              if (res.data.address === " " || res.data.address === null) {
+                address.classList.add('error-input');
+              }else{
+                address.classList.remove('error-input');
+                address.classList.add('error-success');
+              } 
+              if (res.data.institution === " " || res.data.institution === null) {
+                institution.classList.add('error-input');
+              }else {
+                institution.classList.remove('error-input');
+                institution.classList.add('error-success');
+              }
+              if (res.data.reason === " " || res.data.reason === null) {
+                reason.classList.add('error-input');
+              }else{
+                reason.classList.remove('error-input');
+                reason.classList.add('error-success');
+              }
               notyf.error(res.data.message);
             } else {
               // this.getRequests();

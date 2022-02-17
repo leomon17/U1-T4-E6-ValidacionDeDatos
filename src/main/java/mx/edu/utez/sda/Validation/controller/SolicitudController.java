@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 import mx.edu.utez.sda.Validation.entity.Solicitud;
 import mx.edu.utez.sda.Validation.entity.DataTransferObject.SolicitudDTO;
 import mx.edu.utez.sda.Validation.service.SolicitudService;
-import net.bytebuddy.asm.Advice.Return;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;

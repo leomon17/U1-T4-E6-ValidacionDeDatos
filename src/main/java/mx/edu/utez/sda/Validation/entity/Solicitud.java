@@ -38,7 +38,7 @@ public class Solicitud implements Serializable{
 	private String name;
 
     @NotBlank(message ="{user.lastname.notBlank}")
-    @NotNull(message ="{user.lastname.notBlank}")
+    @NotNull(message ="{user.lastname.notNull}")
     @Length(min=2, message = "{user.lastname.notBlank}")
 	@Column(name = "lastname")
     private String lastname;
