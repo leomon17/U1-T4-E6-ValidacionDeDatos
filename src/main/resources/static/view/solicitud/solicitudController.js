@@ -25,12 +25,6 @@ function ($rootScope, $scope, $http, APP_URL, $routeParams, $window) {
               event.preventDefault();
               event.stopPropagation();
               reasonContent.empty();
-              if (content[0].value.length < 1) {
-                reasonContent.append(`<div class="small text-danger">Este es un campo obligatorio</div>`);
-              }else{
-                reasonContent.empty();
-              }
-              notyf.error('Hay campos vacios o incorrectos');
             }
             else {
               this.create(); 
@@ -98,38 +92,32 @@ function ($rootScope, $scope, $http, APP_URL, $routeParams, $window) {
       
       this.create = () => {
 
-        let content = document.querySelectorAll('trix-editor');
-        $scope.solicitud.reason = content[0].value;
-        // $scope.solicitud.lastname = "p";
-        if (content[0].value.length > 0){
-          return $http({
-            method: "POST",
-            url: APP_URL.url + "/solicitud/save",
-            headers: {
-              "Content-Type": "application/json",
-              Accept: "application/json",
-              Authorization: "Bearer " + $scope.token,
-            },
-            data: $scope.solicitud
-  
-          }).then(res => {
-            // console.log(res);
-            if (res.data) {
-              // console.log(res.data);
-              if (res.data.message != 'Notificación registrada correctamente') {
-                notyf.error(res.data.message);
-              } else {
-                // this.getRequests();
-                location.replace("#!/solicitud/");
-                notyf.success(res.data.message);
-              }
+        return $http({
+          method: "POST",
+          url: APP_URL.url + "/solicitud/save",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            Authorization: "Bearer " + $scope.token,
+          },
+          data: $scope.solicitud
+
+        }).then(res => {
+          // console.log(res);
+          if (res.data) {
+            // console.log(res.data);
+            if (res.data.message != 'Notificación registrada correctamente') {
+              notyf.error(res.data.message);
             } else {
-              notyf.error('Ocurrió un error al crear la Notificación');
+              // this.getRequests();
+              location.replace("#!/solicitud/");
+              notyf.success(res.data.message);
             }
-      
-          }, e => console.log("Error", e.message));
-        }
-        notyf.error('Hay campos vacios o incorrectos');
+          } else {
+            notyf.error('Ocurrió un error al crear la Notificación');
+          }
+    
+        }, e => console.log("Error", e.message));
       };
 
       this.getStates = () => {

@@ -1,19 +1,4 @@
-<style>
-    .wysiwyg>[contenteditable=true] img {
-        max-width: 100% !important;
-        max-height: 50vh !important;
-        image-orientation: from-image;
-    }
- 
-    .wysiwyg {
-        height: 700px;
-    }
- 
-    .wysiwyg>[contenteditable=true] {
-        height: 668px !important;
-        overflow-y: auto;
-    }
-</style>
+
 <style>
     .document-content {
        background-color: #FFFFFF;
@@ -131,19 +116,25 @@
                             ng-options="item as item.name for item in listAcademicLevels track by item.id">
                             <option value="">SELECCIONE UN NIVEL ÁCADEMICO...</option>
                         </select>
+                        <div class="invalid-feedback">Este es un campo obligatorio</div>
                     </div>
                     <div class="col-md-4 col-lg-4">
                         <label for="average">Promedio General</label>
                         <input type="number" step="0.01" ng-model="solicitud.average" class="form-control mt-1"
                         id="surname" placeholder="Promedio General" autocomplete="off" required/>
+                        <div class="invalid-feedback">Este es un campo obligatorio</div>
                     </div>
                 </div>
                 <div class="row g-2 mt-3">
                     <div class="col-lg-12 mt-3">
                         <label for="reason" class="form-label">Motivos para obtener beca</label>
-                        <input id="x" type="hidden" name="content">
-                        <trix-editor id="trixContent" class="trix-content document-content" input="x" ng-model="solicitud.reason"></trix-editor>
-                        <div id="reasonContent"></div>  
+                        <!-- <input id="x" type="hidden" name="content">
+                        <trix-editor id="trixContent" class="trix-content document-content" input="x" ng-model="solicitud.reason"></trix-editor> -->
+                        <div class="form-floating">
+                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" ng-model="solicitud.reason" required></textarea>
+                            <label for="floatingTextarea">Motivos</label>
+                            <div class="invalid-feedback">Este es un campo obligatorio</div> 
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer row mt-3">
